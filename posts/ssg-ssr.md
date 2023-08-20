@@ -1,19 +1,22 @@
 ---
-title: "When to Use Static Generation v.s. Server-side Rendering"
+title: "Ebook reader: day 1: initial try outs"
 date: "2020-01-02"
 ---
 
-We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
+I want to build an application that I can see myself using. I have lost some of my initial Russian language abilities. My ability is neither begginer nor fluent. I can pronounce words quite well but I lack the vocabularly to engage in smooth conversation.
 
-You can use Static Generation for many types of pages, including:
+I was initially trying to find an app to let me read a book in Russian and translate word on tap. Using kindle proved to be slow and I want to be able to use the words I looked up in Anki style flashcard system.
 
-- Marketing pages
-- Blog posts
-- E-commerce product listings
-- Help and documentation
+### step 1: messing arround
 
-You should ask yourself: "Can I pre-render this page **ahead** of a user's request?" If the answer is yes, then you should choose Static Generation.
+Initially the task of putting an Epub into a website didn't seem that hard. I wanted to parse an epub, then render the text as normally. But I need it to support all types of epubs, images within them chapter selection and so on to make it usable for others.
 
-On the other hand, Static Generation is **not** a good idea if you cannot pre-render a page ahead of a user's request. Maybe your page shows frequently updated data, and the page content changes on every request.
+Naive attempt was to just use epubjs and render the html using react-html-parser. But this doesnt seem to work together well.
 
-In that case, you can use **Server-Side Rendering**. It will be slower, but the pre-rendered page will always be up-to-date. Or you can skip pre-rendering and use client-side JavaScript to populate data.
+Another problem is I want to be able to tap the text not hold it. The user should be able to look up a dictionary definition with minimal friction. Implementing in React can seem difficult as each word would need an onClick event.
+
+### Conclusion
+
+The only thing I managed to an actual result is by putting an extracted epub xhtml file into an Iframe.
+
+https://github.com/gerhardsletten/react-reader this repo seems to have achieved an epub reader in react. I will try to figure out how it works and fork it to try and implement an event on each word click.
